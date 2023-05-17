@@ -25,7 +25,7 @@ public class UserEntity {
     private Long id;
     private String name;
     private String surname;
-    @Column(unique = true, nullable = false, length = 20)
+    @Column(unique = true, nullable = false, length = 10)
     private String dniNumber;
     private String phone;
     private String birthdate;
@@ -36,4 +36,5 @@ public class UserEntity {
     @ManyToOne(optional = true)
     @JoinColumn(name = "id_role")
     private RoleEntity role;
+
 }

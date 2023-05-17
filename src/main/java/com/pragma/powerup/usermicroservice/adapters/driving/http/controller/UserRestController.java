@@ -32,7 +32,7 @@ public class UserRestController {
                         content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Map"))),
                 @ApiResponse(responseCode = "409", description = "Person already exists",
                         content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Error")))})
-    @PostMapping
+    @PostMapping("/client")
     public ResponseEntity<Map<String, String>> savePerson(@RequestBody UserRequestDto userRequestDto) {
         personHandler.saveUser(userRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -46,7 +46,7 @@ public class UserRestController {
                     @ApiResponse(responseCode = "409", description = "Owner already exists",
                             content = @Content(mediaType = "application/json", schema = @Schema(ref = "#/components/schemas/Error")))})
     @PostMapping("/owner")
-    //@SecurityRequirement(name = "jwt")
+    @SecurityRequirement(name = "jwt")
     //@PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Map<String, String>> saveOwner(@RequestBody UserRequestDto userRequestDto) {
         personHandler.saveOwner(userRequestDto);

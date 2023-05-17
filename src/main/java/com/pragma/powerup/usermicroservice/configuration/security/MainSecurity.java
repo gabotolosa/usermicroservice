@@ -27,9 +27,7 @@ public class MainSecurity {
     JwtEntryPoint jwtEntryPoint;
 
     @Bean
-    public JwtTokenFilter jwtTokenFilter() {
-        return new JwtTokenFilter();
-    }
+    public JwtTokenFilter jwtTokenFilter() { return new JwtTokenFilter(); }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -46,11 +44,10 @@ public class MainSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests(requests -> requests
-                        .requestMatchers("/auth/login", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/health", "/user/", "/user/owner").permitAll()
-                        .requestMatchers("/user").hasRole("ADMIN")
+                        .requestMatchers("/auth/login", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/actuator/health", "/user/client", "/restaurant").permitAll()
+                        //.requestMatchers("/user/owner", "/roles").hasRole("ADMIN")
                         //.requestMatchers("/user/owner").hasRole("ADMIN")
                         //debe tener la anotacion en el controler @preAuthorize("hasRole("Admin")")
-
                         .anyRequest().authenticated()
                 )
                 .formLogin().disable()
