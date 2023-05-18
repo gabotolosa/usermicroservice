@@ -11,20 +11,17 @@ public class UserValidator {
     public static void  validateSaveUser(final User user){
         requiredNonNull(user, "User");
         requiredNonBlank(user.getName(), "name");
-        //requiredNonBlank(user.getSurname(), "surname");
-        //requiredValidDni(user.getDniNumber(), "dniNumber");
-        //requiredValidPhone(user.getPhone(), "phone");
-        //requiredNonBlank(user.getBirthdate(), "birthdate");
-        //requiredValidMail(user.getMail(), "mail");
+        requiredNonBlank(user.getSurname(), "surname");
+        requiredValidDni(user.getDniNumber(), "dniNumber");
+        requiredValidPhone(user.getPhone(), "phone");
+        requiredNonBlank(user.getBirthdate(), "birthdate");
         //requiredNonBlank(user.getPassword(), "password");
         //user.getRole().setId((long) 4L);
     }
 
     public static void validateSaveOwner(final User owner){
         requiredNonNull(owner, "Owner");
-        requiredNonBlank(owner.getName(), "name");
-        requiredNonBlank(owner.getSurname(), "surname");
-        requiredValidPhone(owner.getPhone(), "phone");
+        validateSaveUser(owner);
         requiredValidAge(owner.getBirthdate(), "birthdate");
     }
 

@@ -3,9 +3,10 @@ package com.pragma.powerup.usermicroservice.factory;
 import com.pragma.powerup.usermicroservice.domain.model.User;
 
 public class UserFactoryDataTest {
-    private UserFactoryDataTest(){
 
+    private UserFactoryDataTest(){
     }
+
     public static User getUser(){
         User user = new User();
         user.setId(1L);

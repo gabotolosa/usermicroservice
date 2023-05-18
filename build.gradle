@@ -39,8 +39,13 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.4'
 	testImplementation 'org.springframework.security:spring-security-test:6.0.2'
 	implementation 'com.nimbusds:nimbus-jose-jwt:9.30.2'
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	//implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.0'
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1'
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
